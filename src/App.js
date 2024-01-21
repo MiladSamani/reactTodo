@@ -1,14 +1,25 @@
 import React from "react";
-import ToDo from "./components/ToDo";
+import { Route, Switch } from "react-router-dom";
 
-export default function MyApp() {
+import AllMeetupsPage from "./pages/AllMeetups";
+import NewMeetupPage from "./pages/NewMeetups";
+import FavoritesPage from "./pages/Favorite";
+import Layout from "./components/layout/layout";
+
+export default function App() {
   return (
-    <div>
-      <h1>MY TODO</h1>
-      <ToDo text="English" />
-      <ToDo text="Programming" />
-      <ToDo text="Linux" />
-     
-    </div>
+    <Layout>
+      <Switch>
+        <Route path="/" exact>
+          <AllMeetupsPage />
+        </Route>
+        <Route path="/new-meetup">
+          <NewMeetupPage />
+        </Route>
+        <Route path="/favorites">
+          <FavoritesPage />
+        </Route>
+      </Switch>
+    </Layout>
   );
 }
